@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ================================
+   ROOT VARIABLES
+================================ */
+:root {
+  --primary: #ec4899;
+  --soft-bg: #fdf6f1;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280;
+}
+
+/* ================================
+   BASE STYLES
+================================ */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-image: url('./assets/background.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+html {
+  height: 100%;
+}
+
+/* ================================
+   CUSTOM CLASSES
+================================ */
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.btn-primary {
+  @apply text-white px-6 py-3 rounded-full transition;
+  background-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: #db2777;
+}
+
+.btn-outline {
+  @apply px-6 py-3 rounded-full border transition;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline:hover {
+  background-color: #fce7f3;
+}
+
