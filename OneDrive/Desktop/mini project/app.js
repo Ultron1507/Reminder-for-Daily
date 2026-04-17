@@ -60,9 +60,22 @@ app.get('/login', (req, res) => {
     res.render("login");
 });
 
-app.get("/profile", isLoggedIn, (req, res) => {
+app.get("/profile", isLoggedIn, async (req, res) => {
     console.log(req.user);
-    res.render("profile", { user: req.user });
+    let user = await userModel.findById(req.user._id).populate("post");
+    res.render("profile", { user });
+});
+
+app.post("/post", isLoggedIn, async (req, res) => {
+    let user = await userModel.findOne({email: req.user.email});
+    let post = await postModel.create({
+        user: user._id,
+        content: req.body.content
+    });
+    user.post.push(post._id);
+    await user.save();
+    req.flash('success', 'Post created successfully');
+    return res.redirect('/profile');
 });
 
 app.post('/register', async (req, res) => {
